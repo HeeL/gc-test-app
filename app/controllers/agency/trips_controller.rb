@@ -1,4 +1,4 @@
-class Agency::TripsController < Agency::BaseController
+class Agency::TripsController < ApplicationController
   layout 'agency'
 
 

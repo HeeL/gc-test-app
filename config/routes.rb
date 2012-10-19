@@ -6,10 +6,16 @@ TestApp::Application.routes.draw do
       end
     end
 
-    resources :trips, :only => [:index, :new,:create,:show, :edit, :update], :controller => 'agency/trips'
+    resources :trips, :only => [:index, :new,:create,:show, :edit, :update], :controller => 'agency/trips' do
+      resources :trip_pictures, :only => [:create, :show], :controller => 'agency/trip_pictures'  
+    end
 
     resource :profile, :only => [:edit, :update], :controller => 'agency/profiles' do
       resources :logos, :only => [:create, :show], :controller => 'agency/logos'
+    end
+
+    resource :users, :only => [:edit, :update], :controller => 'agency/users' do
+      resources :avatars, :only => [:create, :show], :controller => 'agency/avatars'
     end
 
   root :to => redirect("/profile/edit")

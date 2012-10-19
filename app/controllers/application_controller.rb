@@ -13,6 +13,12 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
 
+  def current_trip
+    @current_trip ||= Trip.find(1)
+  end
+
+  helper_method :current_trip
+  
   def current_agency
     @current_agency ||= Agency.find(1)
   end

@@ -36,6 +36,22 @@ ActiveRecord::Schema.define(:version => 20120920165149) do
     t.string   "image"
   end
 
+  create_table "avatar", :force => true do |t|
+    t.integer  "user_id"
+    t.boolean  "current"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "image"
+  end
+
+  create_table "trip_pictures", :force => true do |t|
+    t.integer  "trip_id"
+    t.boolean  "current"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "image"
+  end
+
   create_table "roles", :force => true do |t|
     t.string   "name"
     t.string   "description"

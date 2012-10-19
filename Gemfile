@@ -40,8 +40,11 @@ gem 'unicorn'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
-gem "capybara", :group => [:development, :test]
-gem "capybara-webkit", :group => [:development, :test]
+group :test, :development do
+  gem "capybara"
+  gem "capybara-webkit"
+  gem 'factory_girl_rails', "4.0"
+end
 
 # use the recommended `expect` syntax over `should`
 # http://myronmars.to/n/dev-blog/2012/06/rspecs-new-expectation-syntax

@@ -37,6 +37,8 @@
             %a{:href => "#"}
               %span
     = form_for([@user]) do |f|
+      - %w[x y w h].each do |attribute|
+        = f.text_field "crop_#{attribute}"
       .form.dash
         %p.inputsmall
           = f.select :gender,  [['Mr', 'M'], ['Mrs', 'F']]

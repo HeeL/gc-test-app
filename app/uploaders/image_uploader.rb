@@ -35,12 +35,25 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :thumb do
+    process :crop
     process :resize_to_fill => [56,56]
   end
 
   # Image geometry
   before :cache, :capture_size_before_cache
   before :retrieve_from_cache, :capture_size_after_retrieve_from_cache
+
+  def crop
+    if model.crop_x.present?
+      manipulate! do |img|
+        x = model.crop_x.to_i
+        y = model.crop_y.to_i
+        w = model.crop_w.to_i
+        h = model.crop_h.to_i
+        img.crop!(x, y, w, h)
+      end
+    end
+  end
 
   def capture_size_before_cache(new_file)
     model.image_width, model.image_height = `identify -format "%wx%h" #{new_file.path}`.split(/x/)

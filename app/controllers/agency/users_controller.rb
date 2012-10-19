@@ -1,4 +1,4 @@
-class Agency::UsersController < Agency::BaseController
+class Agency::UsersController < ApplicationController
   layout 'agency'
 
   def edit

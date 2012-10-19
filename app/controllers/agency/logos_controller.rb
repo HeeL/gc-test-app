@@ -1,4 +1,4 @@
-class Agency::LogosController < Agency::BaseController
+class Agency::LogosController < ApplicationController
   def create
     @agency = Agency.find(@current_agency.id)
     @logo = @agency.logos.build

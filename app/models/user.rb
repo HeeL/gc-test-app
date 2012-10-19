@@ -3,7 +3,8 @@ class User < ActiveRecord::Base
   attr_accessible :id, :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :phone, :title, :gender, :office_phone, :agency_attributes, :authentication_tokens, :trip_users, :trips_manageds
   # attr_accessible :title, :body
   attr_accessible :agency_id, :role_id
-  
+  attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
+  after_update :crop_avatar
 
   belongs_to :agency
 
